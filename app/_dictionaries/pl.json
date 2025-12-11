@@ -1,0 +1,18 @@
+{
+  "blog": {
+    "readMore": "Czytaj więcej",
+    "otherArticles": "Inne artykuły",
+    "otherArticlesDescription": "Odkrywaj świeże historie zaprojektowane, aby pobudzić Twoją kreatywność i pomóc Ci zobaczyć rzeczy z nowej perspektywy."
+  },
+  "home": {
+    "latestArticles": "Najnowsze artykuły",
+    "latestArticlesDescription": "Odkrywaj świeże historie zaprojektowane, aby pobudzić Twoją kreatywność i pomóc Ci zobaczyć rzeczy z nowej perspektywy."
+  },
+  "language": {
+    "en": "Angielski",
+    "pl": "Polski"
+  },
+  "footer": {
+    "copyright": "Wszelkie prawa zastrzeżone."
+  }
+}

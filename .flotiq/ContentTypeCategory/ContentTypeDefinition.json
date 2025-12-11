@@ -1,0 +1,130 @@
+{
+  "name": "category",
+  "label": "Category",
+  "draftPublic": true,
+  "internal": false,
+  "schemaDefinition": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "color": {
+            "type": "string",
+            "minLength": 1
+          },
+          "__translations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "color",
+                "__language"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "color": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "__language": {
+                  "type": "string",
+                  "default": "en",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "required": [
+      "name",
+      "color"
+    ],
+    "additionalProperties": false
+  },
+  "metaDefinition": {
+    "order": [
+      "name",
+      "color",
+      "__translations"
+    ],
+    "propertiesConfig": {
+      "name": {
+        "label": "Name",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text",
+        "isTitlePart": true
+      },
+      "color": {
+        "label": "Color",
+        "unique": false,
+        "options": [
+          "blue",
+          "green",
+          "yellow",
+          "indigo"
+        ],
+        "helpText": "",
+        "inputType": "select",
+        "useOptionsWithLabels": false
+      },
+      "__translations": {
+        "items": {
+          "order": [
+            "name",
+            "color",
+            "__language"
+          ],
+          "propertiesConfig": {
+            "name": {
+              "label": "Name",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text",
+              "isTitlePart": true
+            },
+            "color": {
+              "label": "Color",
+              "unique": false,
+              "options": [
+                "blue",
+                "green",
+                "yellow",
+                "indigo"
+              ],
+              "helpText": "",
+              "inputType": "select",
+              "useOptionsWithLabels": false
+            },
+            "__language": {
+              "label": "Language",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "Translations",
+        "hidden": true,
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      }
+    }
+  },
+  "featuredImage": []
+}

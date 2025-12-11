@@ -1,0 +1,265 @@
+{
+  "name": "_webhooks",
+  "label": "Webhooks (internal)",
+  "draftPublic": false,
+  "internal": true,
+  "schemaDefinition": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "if": {
+            "properties": {
+              "executionMode": {
+                "const": "code"
+              }
+            }
+          },
+          "url": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "default": "",
+            "minLength": 0
+          },
+          "else": {
+            "properties": {
+              "url": {
+                "minLength": 1
+              }
+            }
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "then": {
+            "properties": {
+              "code": {
+                "minLength": 1
+              }
+            }
+          },
+          "type": {
+            "type": "string",
+            "default": "async",
+            "minLength": 0
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "default": "Create"
+                }
+              }
+            },
+            "minLength": 1
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "headers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "header_name": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9-]*$"
+                },
+                "header_value": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "executionMode": {
+            "type": "string",
+            "default": "url",
+            "minLength": 0
+          },
+          "content_type_definitions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "content_type_definition_name": {
+                  "type": "string"
+                }
+              }
+            },
+            "minLength": 1
+          }
+        }
+      }
+    ],
+    "required": [
+      "name",
+      "content_type_definitions",
+      "actions"
+    ],
+    "additionalProperties": false
+  },
+  "metaDefinition": {
+    "order": [
+      "name",
+      "type",
+      "executionMode",
+      "content_type_definitions",
+      "actions",
+      "url",
+      "code",
+      "headers",
+      "enabled"
+    ],
+    "propertiesConfig": {
+      "if": {
+        "label": "if",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "url": {
+        "label": "Url",
+        "unique": false,
+        "helpText": "Insert webhook Url",
+        "inputType": "text"
+      },
+      "code": {
+        "label": "Webhook code",
+        "unique": false,
+        "helpText": "Insert webhook code",
+        "inputType": "text"
+      },
+      "else": {
+        "label": "else",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "name": {
+        "label": "Name",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text",
+        "isTitlePart": true
+      },
+      "then": {
+        "label": "then",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "type": {
+        "label": "Webhook type",
+        "unique": false,
+        "options": [
+          "async",
+          "sync",
+          "ctd"
+        ],
+        "helpText": "Select webhook type",
+        "inputType": "select"
+      },
+      "actions": {
+        "items": {
+          "order": [
+            "action"
+          ],
+          "propertiesConfig": {
+            "action": {
+              "label": "Action",
+              "unique": false,
+              "options": [
+                "Create",
+                "Update",
+                "Delete",
+                "Publish",
+                "Unpublish",
+                "Archive",
+                "Custom",
+                "WorkflowTransition"
+              ],
+              "helpText": "",
+              "inputType": "select"
+            }
+          }
+        },
+        "label": "Actions",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      },
+      "enabled": {
+        "label": "Enabled",
+        "unique": false,
+        "helpText": "",
+        "inputType": "checkbox"
+      },
+      "headers": {
+        "items": {
+          "order": [
+            "header_name",
+            "header_value"
+          ],
+          "propertiesConfig": {
+            "header_name": {
+              "label": "Header name",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            },
+            "header_value": {
+              "label": "Header value",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "Headers",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      },
+      "executionMode": {
+        "label": "Webhook execution mode",
+        "unique": false,
+        "options": [
+          "url",
+          "code"
+        ],
+        "helpText": "Select webhook execution mode (only in available sync webhook)",
+        "inputType": "select"
+      },
+      "content_type_definitions": {
+        "items": {
+          "order": [
+            "content_type_definition_name"
+          ],
+          "propertiesConfig": {
+            "content_type_definition_name": {
+              "label": "Content type definition name",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "Content type definitions",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      }
+    }
+  },
+  "featuredImage": []
+}

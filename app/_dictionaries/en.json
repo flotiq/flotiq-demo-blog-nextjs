@@ -1,0 +1,18 @@
+{
+  "blog": {
+    "readMore": "Read more",
+    "otherArticles": "Other articles",
+    "otherArticlesDescription": "Explore fresh stories designed to boost your creativity and help you see things from new perspectives."
+  },
+  "home": {
+    "latestArticles": "Latest Articles",
+    "latestArticlesDescription": "Explore fresh stories designed to boost your creativity and help you see things from new perspectives."
+  },
+  "language": {
+    "en": "English",
+    "pl": "Polish"
+  },
+  "footer": {
+    "copyright": "All rights reserved."
+  }
+}

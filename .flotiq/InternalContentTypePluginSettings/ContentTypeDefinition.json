@@ -1,0 +1,117 @@
+{
+  "name": "_plugin_settings",
+  "label": "Plugin settings (internal)",
+  "draftPublic": false,
+  "internal": true,
+  "schemaDefinition": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "context": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "manifest": {
+            "type": "string"
+          },
+          "settings": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    ],
+    "required": [
+      "name",
+      "enabled",
+      "url",
+      "version"
+    ],
+    "additionalProperties": false
+  },
+  "metaDefinition": {
+    "order": [
+      "name",
+      "description",
+      "version",
+      "url",
+      "enabled",
+      "settings",
+      "manifest",
+      "context"
+    ],
+    "propertiesConfig": {
+      "url": {
+        "label": "Url",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "name": {
+        "label": "Name",
+        "unique": true,
+        "helpText": "",
+        "inputType": "text",
+        "isTitlePart": true
+      },
+      "context": {
+        "label": "Context",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "enabled": {
+        "label": "Enabled",
+        "unique": false,
+        "helpText": "",
+        "inputType": "checkbox"
+      },
+      "version": {
+        "label": "Version",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "manifest": {
+        "label": "Manifest",
+        "unique": false,
+        "helpText": "JSON formatted manifest data",
+        "inputType": "textarea"
+      },
+      "settings": {
+        "label": "Settings",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "description": {
+        "label": "Description",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      }
+    }
+  },
+  "featuredImage": []
+}

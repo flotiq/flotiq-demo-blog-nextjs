@@ -1,0 +1,58 @@
+{
+  "name": "author",
+  "label": "Author",
+  "draftPublic": true,
+  "internal": false,
+  "schemaDefinition": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "avatar": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            }
+          }
+        }
+      }
+    ],
+    "required": [
+      "name"
+    ],
+    "additionalProperties": false
+  },
+  "metaDefinition": {
+    "order": [
+      "name",
+      "avatar"
+    ],
+    "propertiesConfig": {
+      "name": {
+        "label": "Name",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text",
+        "isTitlePart": true
+      },
+      "avatar": {
+        "label": "Avatar",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "_media"
+        }
+      }
+    }
+  },
+  "featuredImage": []
+}

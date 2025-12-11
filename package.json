@@ -1,0 +1,41 @@
+{
+  "name": "flotiq-demo-portfolio-nextjs",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Flotiq team <helo@flotiq.com> (https://flotiq.com/)",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,html,mdx,yaml}\""
+  },
+  "dependencies": {
+    "@flotiq/flotiq-api-sdk": "^1.0.0-alpha.12",
+    "@flotiq/nextjs-addon": "^0.1.4",
+    "@flotiq/nextjs-internationalization": "^1.0.1",
+    "@flotiq/nextjs-live-preview": "^0.7.1",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.560.0",
+    "next": "^16.0.8",
+    "nextjs-toploader": "^3.9.17",
+    "prettier": "^3.7.4",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
+    "@types/node": "^25.0.0",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.0.8",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3"
+  }
+}

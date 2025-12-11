@@ -1,0 +1,354 @@
+{
+  "name": "blogpost",
+  "label": "Blog Post",
+  "draftPublic": true,
+  "internal": false,
+  "schemaDefinition": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "lead": {
+            "type": "string",
+            "minLength": 1
+          },
+          "slug": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-_]*$",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "author": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 1
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 1
+          },
+          "read_time": {
+            "type": "number"
+          },
+          "seo_title": {
+            "type": "string"
+          },
+          "headerImage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 1
+          },
+          "seo_keywords": {
+            "type": "string"
+          },
+          "__translations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "title",
+                "slug",
+                "content",
+                "headerImage",
+                "lead",
+                "author",
+                "category",
+                "__language"
+              ],
+              "properties": {
+                "lead": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "slug": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9-_]*$",
+                  "minLength": 1
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "author": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataSource"
+                  },
+                  "minItems": 1
+                },
+                "content": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "category": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataSource"
+                  },
+                  "minItems": 1
+                },
+                "read_time": {
+                  "type": "number"
+                },
+                "seo_title": {
+                  "type": "string"
+                },
+                "__language": {
+                  "type": "string",
+                  "default": "en",
+                  "minLength": 1
+                },
+                "headerImage": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataSource"
+                  },
+                  "minItems": 1
+                },
+                "seo_keywords": {
+                  "type": "string"
+                },
+                "seo_meta_description": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "seo_meta_description": {
+            "type": "string"
+          }
+        }
+      }
+    ],
+    "required": [
+      "title",
+      "slug",
+      "content",
+      "headerImage",
+      "lead",
+      "author",
+      "category"
+    ],
+    "additionalProperties": false
+  },
+  "metaDefinition": {
+    "order": [
+      "title",
+      "slug",
+      "seo_title",
+      "seo_keywords",
+      "seo_meta_description",
+      "headerImage",
+      "read_time",
+      "lead",
+      "content",
+      "author",
+      "category",
+      "__translations"
+    ],
+    "propertiesConfig": {
+      "lead": {
+        "label": "Lead",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "slug": {
+        "label": "Slug",
+        "unique": true,
+        "helpText": "Slug can only have alphanumerical characters, - and _",
+        "inputType": "text"
+      },
+      "title": {
+        "label": "Title",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text",
+        "isTitlePart": true
+      },
+      "author": {
+        "label": "Author",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "author"
+        }
+      },
+      "content": {
+        "label": "Content",
+        "unique": false,
+        "helpText": "",
+        "inputType": "richtext"
+      },
+      "category": {
+        "label": "Category",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "category"
+        }
+      },
+      "read_time": {
+        "label": "Read time",
+        "unique": false,
+        "helpText": "",
+        "inputType": "number"
+      },
+      "seo_title": {
+        "label": "SEO Title",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "headerImage": {
+        "label": "Header image",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "_media"
+        }
+      },
+      "seo_keywords": {
+        "label": "SEO keywords",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "__translations": {
+        "items": {
+          "order": [
+            "title",
+            "slug",
+            "seo_title",
+            "seo_keywords",
+            "seo_meta_description",
+            "headerImage",
+            "read_time",
+            "lead",
+            "content",
+            "author",
+            "category",
+            "__language"
+          ],
+          "propertiesConfig": {
+            "lead": {
+              "label": "Lead",
+              "unique": false,
+              "helpText": "",
+              "inputType": "textarea"
+            },
+            "slug": {
+              "label": "Slug",
+              "unique": true,
+              "helpText": "Slug can only have alphanumerical characters, - and _",
+              "inputType": "text"
+            },
+            "title": {
+              "label": "Title",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text",
+              "isTitlePart": true
+            },
+            "author": {
+              "label": "Author",
+              "unique": false,
+              "helpText": "",
+              "inputType": "datasource",
+              "validation": {
+                "relationContenttype": "author"
+              }
+            },
+            "content": {
+              "label": "Content",
+              "unique": false,
+              "helpText": "",
+              "inputType": "richtext"
+            },
+            "category": {
+              "label": "Category",
+              "unique": false,
+              "helpText": "",
+              "inputType": "datasource",
+              "validation": {
+                "relationContenttype": "category"
+              }
+            },
+            "read_time": {
+              "label": "Read time",
+              "unique": false,
+              "helpText": "",
+              "inputType": "number"
+            },
+            "seo_title": {
+              "label": "SEO Title",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            },
+            "__language": {
+              "label": "Language",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            },
+            "headerImage": {
+              "label": "Header image",
+              "unique": false,
+              "helpText": "",
+              "inputType": "datasource",
+              "validation": {
+                "relationContenttype": "_media"
+              }
+            },
+            "seo_keywords": {
+              "label": "SEO keywords",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            },
+            "seo_meta_description": {
+              "label": "SEO Meta Description",
+              "unique": false,
+              "helpText": "",
+              "inputType": "textarea"
+            }
+          }
+        },
+        "label": "Translations",
+        "hidden": true,
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      },
+      "seo_meta_description": {
+        "label": "SEO Meta Description",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      }
+    }
+  },
+  "featuredImage": []
+}

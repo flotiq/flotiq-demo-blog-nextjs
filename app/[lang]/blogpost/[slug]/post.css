@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+.blogpost-content {
+  @apply text-gray-500;
+}
+
+.blogpost-content h1,
+h2,
+h3,
+h4 {
+  @apply font-bold text-gray-900;
+}
+
+.blogpost-content h1 {
+  @apply text-4xl mb-5;
+}
+
+.blogpost-content h2 {
+  @apply text-2xl mb-5;
+}
+
+.blogpost-content h3,
+h4 {
+  @apply text-xl mb-2;
+}
+
+.blogpost-content p {
+  @apply text-gray-500 text-lg mb-5;
+}
+
+.blogpost-content img {
+  @apply py-4 md:py-8;
+}
+
+.blogpost-content ul,
+ol {
+  @apply mb-5 list-inside space-y-1;
+}
+
+.blogpost-content ul {
+  @apply list-disc;
+}
+
+.blogpost-content ol {
+  @apply list-decimal;
+}
+
+.blogpost-content hr {
+  @apply mb-5 border-t;
+  border-color: var(--color-border-default);
+}
