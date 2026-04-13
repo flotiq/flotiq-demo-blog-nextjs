@@ -51,18 +51,22 @@ export default async function BlogpostPage({ params }: BlogpostPageParams) {
   return (
     <div className="pt-6 md:pt-10 lg:pt-12 pb-10 md:pb-16 lg:pb-24">
       <article className="space-y-5 mdLspace-y-8 mb-20 md:mb-24 lg:mb-32">
-        <Author
-          {...blogpostAuthor}
-          publishAt={publishedAt}
-          lang={lang}
-          readTime={getTranslatedField(blogpost, 'read_time', lang)}
-          size="large"
-        />
+        <LivePreviewBox data={blogpostAuthor} fieldName={''}>
+          <Author
+            {...blogpostAuthor}
+            publishAt={publishedAt}
+            lang={lang}
+            readTime={getTranslatedField(blogpost, 'read_time', lang)}
+            size="large"
+          />
+        </LivePreviewBox>
 
         {blogpostCategory && (
-          <Badge variant={blogpostCategory.color}>
-            {blogpostCategory.name}
-          </Badge>
+          <LivePreviewBox data={blogpostCategory} fieldName={''}>
+            <Badge variant={blogpostCategory.color}>
+              {blogpostCategory.name}
+            </Badge>
+          </LivePreviewBox>
         )}
 
         <h1 className="text-4xl font-bold sm:text-4xl">
@@ -91,7 +95,7 @@ export default async function BlogpostPage({ params }: BlogpostPageParams) {
                 type: 'image',
                 omitFileName: false,
               })}
-              alt={blogpost.title}
+              alt={getTranslatedField(blogpost, 'title', lang) || ''}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
