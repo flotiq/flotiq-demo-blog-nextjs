@@ -2,46 +2,42 @@
   "name": "blogpost",
   "label": "Blog Post",
   "draftPublic": true,
+  "autoSave": false,
   "internal": false,
   "schemaDefinition": {
-    "type": "object",
     "allOf": [
       {
-        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition",
+        "type": null
       },
       {
-        "type": "object",
         "properties": {
           "lead": {
-            "type": "string",
-            "minLength": 1
+            "type": "string"
           },
           "slug": {
-            "type": "string",
             "pattern": "^[a-zA-Z0-9-_]*$",
-            "minLength": 1
+            "type": "string"
           },
           "title": {
-            "type": "string",
-            "minLength": 1
+            "type": "string"
           },
           "author": {
-            "type": "array",
             "items": {
-              "$ref": "#/components/schemas/DataSource"
+              "$ref": "#/components/schemas/DataSource",
+              "type": null
             },
-            "minItems": 1
+            "type": "array"
           },
           "content": {
-            "type": "string",
-            "minLength": 1
+            "type": "string"
           },
           "category": {
-            "type": "array",
             "items": {
-              "$ref": "#/components/schemas/DataSource"
+              "$ref": "#/components/schemas/DataSource",
+              "type": null
             },
-            "minItems": 1
+            "type": "array"
           },
           "read_time": {
             "type": "number"
@@ -50,19 +46,17 @@
             "type": "string"
           },
           "headerImage": {
-            "type": "array",
             "items": {
-              "$ref": "#/components/schemas/DataSource"
+              "$ref": "#/components/schemas/DataSource",
+              "type": null
             },
-            "minItems": 1
+            "type": "array"
           },
           "seo_keywords": {
             "type": "string"
           },
           "__translations": {
-            "type": "array",
             "items": {
-              "type": "object",
               "required": [
                 "title",
                 "slug",
@@ -75,35 +69,31 @@
               ],
               "properties": {
                 "lead": {
-                  "type": "string",
-                  "minLength": 1
+                  "type": "string"
                 },
                 "slug": {
-                  "type": "string",
                   "pattern": "^[a-zA-Z0-9-_]*$",
-                  "minLength": 1
+                  "type": "string"
                 },
                 "title": {
-                  "type": "string",
-                  "minLength": 1
+                  "type": "string"
                 },
                 "author": {
-                  "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/DataSource"
+                    "$ref": "#/components/schemas/DataSource",
+                    "type": null
                   },
-                  "minItems": 1
+                  "type": "array"
                 },
                 "content": {
-                  "type": "string",
-                  "minLength": 1
+                  "type": "string"
                 },
                 "category": {
-                  "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/DataSource"
+                    "$ref": "#/components/schemas/DataSource",
+                    "type": null
                   },
-                  "minItems": 1
+                  "type": "array"
                 },
                 "read_time": {
                   "type": "number"
@@ -112,16 +102,15 @@
                   "type": "string"
                 },
                 "__language": {
-                  "type": "string",
                   "default": "en",
-                  "minLength": 1
+                  "type": "string"
                 },
                 "headerImage": {
-                  "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/DataSource"
+                    "$ref": "#/components/schemas/DataSource",
+                    "type": null
                   },
-                  "minItems": 1
+                  "type": "array"
                 },
                 "seo_keywords": {
                   "type": "string"
@@ -129,13 +118,16 @@
                 "seo_meta_description": {
                   "type": "string"
                 }
-              }
-            }
+              },
+              "type": "object"
+            },
+            "type": "array"
           },
           "seo_meta_description": {
             "type": "string"
           }
-        }
+        },
+        "type": "object"
       }
     ],
     "required": [
@@ -147,7 +139,8 @@
       "author",
       "category"
     ],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "type": "object"
   },
   "metaDefinition": {
     "order": [
@@ -167,75 +160,83 @@
     "propertiesConfig": {
       "lead": {
         "label": "Lead",
+        "inputType": "textarea",
         "unique": false,
-        "helpText": "",
-        "inputType": "textarea"
+        "helpText": ""
       },
       "slug": {
         "label": "Slug",
+        "inputType": "text",
         "unique": true,
-        "helpText": "Slug can only have alphanumerical characters, - and _",
-        "inputType": "text"
+        "helpText": "Slug can only have alphanumerical characters, - and _"
       },
       "title": {
         "label": "Title",
+        "inputType": "text",
         "unique": false,
         "helpText": "",
-        "inputType": "text",
         "isTitlePart": true
       },
       "author": {
         "label": "Author",
-        "unique": false,
-        "helpText": "",
         "inputType": "datasource",
+        "unique": false,
         "validation": {
+          "relationMultiple": false,
           "relationContenttype": "author"
-        }
+        },
+        "helpText": ""
       },
       "content": {
         "label": "Content",
+        "inputType": "richtext",
         "unique": false,
-        "helpText": "",
-        "inputType": "richtext"
+        "helpText": ""
       },
       "category": {
         "label": "Category",
-        "unique": false,
-        "helpText": "",
         "inputType": "datasource",
+        "unique": false,
         "validation": {
+          "relationMultiple": false,
           "relationContenttype": "category"
-        }
+        },
+        "helpText": ""
       },
       "read_time": {
         "label": "Read time",
+        "inputType": "number",
         "unique": false,
-        "helpText": "",
-        "inputType": "number"
+        "helpText": ""
       },
       "seo_title": {
         "label": "SEO Title",
+        "inputType": "text",
         "unique": false,
-        "helpText": "",
-        "inputType": "text"
+        "helpText": ""
       },
       "headerImage": {
         "label": "Header image",
-        "unique": false,
-        "helpText": "",
         "inputType": "datasource",
+        "unique": false,
         "validation": {
+          "relationMultiple": false,
           "relationContenttype": "_media"
-        }
+        },
+        "helpText": ""
       },
       "seo_keywords": {
         "label": "SEO keywords",
+        "inputType": "text",
         "unique": false,
-        "helpText": "",
-        "inputType": "text"
+        "helpText": ""
       },
       "__translations": {
+        "label": "Translations",
+        "inputType": "object",
+        "unique": false,
+        "hidden": true,
+        "helpText": "",
         "items": {
           "order": [
             "title",
@@ -254,99 +255,97 @@
           "propertiesConfig": {
             "lead": {
               "label": "Lead",
+              "inputType": "textarea",
               "unique": false,
-              "helpText": "",
-              "inputType": "textarea"
+              "helpText": ""
             },
             "slug": {
               "label": "Slug",
+              "inputType": "text",
               "unique": true,
-              "helpText": "Slug can only have alphanumerical characters, - and _",
-              "inputType": "text"
+              "helpText": "Slug can only have alphanumerical characters, - and _"
             },
             "title": {
               "label": "Title",
+              "inputType": "text",
               "unique": false,
               "helpText": "",
-              "inputType": "text",
               "isTitlePart": true
             },
             "author": {
               "label": "Author",
-              "unique": false,
-              "helpText": "",
               "inputType": "datasource",
+              "unique": false,
               "validation": {
+                "relationMultiple": false,
                 "relationContenttype": "author"
-              }
+              },
+              "helpText": ""
             },
             "content": {
               "label": "Content",
+              "inputType": "richtext",
               "unique": false,
-              "helpText": "",
-              "inputType": "richtext"
+              "helpText": ""
             },
             "category": {
               "label": "Category",
-              "unique": false,
-              "helpText": "",
               "inputType": "datasource",
+              "unique": false,
               "validation": {
+                "relationMultiple": false,
                 "relationContenttype": "category"
-              }
+              },
+              "helpText": ""
             },
             "read_time": {
               "label": "Read time",
+              "inputType": "number",
               "unique": false,
-              "helpText": "",
-              "inputType": "number"
+              "helpText": ""
             },
             "seo_title": {
               "label": "SEO Title",
+              "inputType": "text",
               "unique": false,
-              "helpText": "",
-              "inputType": "text"
+              "helpText": ""
             },
             "__language": {
               "label": "Language",
+              "inputType": "text",
               "unique": false,
-              "helpText": "",
-              "inputType": "text"
+              "helpText": ""
             },
             "headerImage": {
               "label": "Header image",
-              "unique": false,
-              "helpText": "",
               "inputType": "datasource",
+              "unique": false,
               "validation": {
+                "relationMultiple": false,
                 "relationContenttype": "_media"
-              }
+              },
+              "helpText": ""
             },
             "seo_keywords": {
               "label": "SEO keywords",
+              "inputType": "text",
               "unique": false,
-              "helpText": "",
-              "inputType": "text"
+              "helpText": ""
             },
             "seo_meta_description": {
               "label": "SEO Meta Description",
+              "inputType": "textarea",
               "unique": false,
-              "helpText": "",
-              "inputType": "textarea"
+              "helpText": ""
             }
           }
-        },
-        "label": "Translations",
-        "hidden": true,
-        "unique": false,
-        "helpText": "",
-        "inputType": "object"
+        }
       },
       "seo_meta_description": {
         "label": "SEO Meta Description",
+        "inputType": "textarea",
         "unique": false,
-        "helpText": "",
-        "inputType": "textarea"
+        "helpText": ""
       }
     }
   },

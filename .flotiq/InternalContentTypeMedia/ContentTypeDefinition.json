@@ -2,36 +2,36 @@
   "name": "_media",
   "label": "Media (internal)",
   "draftPublic": false,
+  "autoSave": false,
   "internal": true,
   "schemaDefinition": {
-    "type": "object",
     "allOf": [
       {
-        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition",
+        "type": null
       },
       {
-        "type": "object",
         "properties": {
           "alt": {
             "type": "string"
           },
           "url": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
           },
           "size": {
             "type": "number"
           },
           "tags": {
-            "type": "array",
             "items": {
-              "$ref": "#/components/schemas/DataSource"
+              "$ref": "#/components/schemas/DataSource",
+              "type": null
             },
-            "minItems": 0
+            "type": "array"
           },
           "type": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
           },
           "title": {
             "type": "string"
@@ -43,81 +43,81 @@
             "type": "number"
           },
           "source": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
           },
           "fileName": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
           },
           "mimeType": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
           },
           "variants": {
-            "type": "array",
             "items": {
-              "type": "object",
               "required": [
                 "name"
               ],
               "properties": {
                 "name": {
-                  "type": "string",
                   "pattern": "^[_a-zA-Z0-9]+$",
-                  "minLength": 1
+                  "minLength": 1,
+                  "type": "string"
                 },
                 "trim": {
-                  "type": "object",
+                  "properties": {
+                    "top": {
+                      "maximum": 9999999,
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    "left": {
+                      "maximum": 9999999,
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    "right": {
+                      "maximum": 9999999,
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    "width": {
+                      "maximum": 9999999,
+                      "minimum": 1,
+                      "type": "number"
+                    },
+                    "bottom": {
+                      "maximum": 9999999,
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    "height": {
+                      "maximum": 9999999,
+                      "minimum": 1,
+                      "type": "number"
+                    }
+                  },
                   "required": [
                     "top",
                     "left"
                   ],
-                  "properties": {
-                    "top": {
-                      "type": "number",
-                      "maximum": 9999999,
-                      "minimum": 0
-                    },
-                    "left": {
-                      "type": "number",
-                      "maximum": 9999999,
-                      "minimum": 0
-                    },
-                    "right": {
-                      "type": "number",
-                      "maximum": 9999999,
-                      "minimum": 0
-                    },
-                    "width": {
-                      "type": "number",
-                      "maximum": 9999999,
-                      "minimum": 1
-                    },
-                    "bottom": {
-                      "type": "number",
-                      "maximum": 9999999,
-                      "minimum": 0
-                    },
-                    "height": {
-                      "type": "number",
-                      "maximum": 9999999,
-                      "minimum": 1
-                    }
-                  }
+                  "type": "object"
                 }
-              }
+              },
+              "type": "object"
             },
-            "minItems": 0
+            "type": "array"
           },
           "extension": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
           },
           "externalId": {
             "type": "string"
           }
-        }
+        },
+        "type": "object"
       }
     ],
     "required": [
@@ -129,7 +129,8 @@
       "extension",
       "type"
     ],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "type": "object"
   },
   "metaDefinition": {
     "order": [
@@ -151,74 +152,88 @@
     "propertiesConfig": {
       "alt": {
         "label": "ALT",
+        "inputType": "text",
         "unique": false,
-        "inputType": "text"
+        "helpText": ""
       },
       "url": {
         "label": "Url",
+        "inputType": "text",
         "unique": false,
-        "inputType": "text"
+        "helpText": ""
       },
       "size": {
         "label": "Size",
+        "inputType": "number",
         "unique": false,
-        "inputType": "number"
+        "helpText": ""
       },
       "tags": {
         "label": "Tags",
-        "unique": false,
-        "helpText": "",
         "inputType": "datasource",
+        "unique": false,
         "validation": {
           "relationMultiple": true,
           "relationContenttype": "_tag"
-        }
+        },
+        "helpText": ""
       },
       "type": {
         "label": "Type",
+        "inputType": "select",
         "unique": false,
         "options": [
           "image",
           "file"
         ],
-        "inputType": "select"
+        "helpText": ""
       },
       "title": {
         "label": "Title",
+        "inputType": "text",
         "unique": false,
-        "inputType": "text"
+        "helpText": ""
       },
       "width": {
         "label": "Width",
+        "inputType": "number",
         "unique": false,
-        "inputType": "number"
+        "helpText": ""
       },
       "height": {
         "label": "Height",
+        "inputType": "number",
         "unique": false,
-        "inputType": "number"
+        "helpText": ""
       },
       "source": {
         "label": "Source",
+        "inputType": "select",
         "unique": false,
         "options": [
           "disk",
           "unsplash"
         ],
-        "inputType": "select"
+        "helpText": ""
       },
       "fileName": {
         "label": "File name",
-        "unique": false,
         "inputType": "text",
+        "unique": false,
+        "helpText": "",
         "isTitlePart": true
       },
       "mimeType": {
         "label": "MIME type",
+        "inputType": "text",
         "unique": false,
-        "inputType": "text"
+        "helpText": ""
       },
       "variants": {
+        "label": "Variants",
+        "inputType": "object",
+        "unique": false,
+        "helpText": "",
         "items": {
           "order": [
             "name",
@@ -227,70 +242,30 @@
           "propertiesConfig": {
             "name": {
               "label": "name",
+              "inputType": "text",
               "unique": true,
-              "inputType": "text"
+              "helpText": ""
             },
             "trim": {
               "label": "Trim",
-              "order": [
-                "top",
-                "right",
-                "bottom",
-                "left",
-                "width",
-                "height"
-              ],
-              "unique": false,
               "inputType": "custom",
-              "propertiesConfig": {
-                "top": {
-                  "label": "Top",
-                  "unique": false,
-                  "inputType": "number"
-                },
-                "left": {
-                  "label": "Left",
-                  "unique": false,
-                  "inputType": "number"
-                },
-                "right": {
-                  "label": "Right",
-                  "unique": false,
-                  "inputType": "number"
-                },
-                "width": {
-                  "label": "Width",
-                  "unique": false,
-                  "inputType": "number"
-                },
-                "bottom": {
-                  "label": "Bottom",
-                  "unique": false,
-                  "inputType": "number"
-                },
-                "height": {
-                  "label": "Height",
-                  "unique": false,
-                  "inputType": "number"
-                }
-              }
+              "unique": false,
+              "helpText": ""
             }
           }
-        },
-        "label": "Variants",
-        "unique": false,
-        "helpText": "",
-        "inputType": "object"
+        }
       },
       "extension": {
         "label": "Extension",
+        "inputType": "text",
         "unique": false,
-        "inputType": "text"
+        "helpText": ""
       },
       "externalId": {
         "label": "External id",
+        "inputType": "text",
         "unique": false,
-        "inputType": "text"
+        "helpText": ""
       }
     }
   },

@@ -33,9 +33,9 @@ export default async function BlogpostPage({ params }: BlogpostPageParams) {
     return notFound();
   }
 
-  const blogpostImage = blogpost.headerImage?.[0];
-  const blogpostAuthor = blogpost.author?.[0];
-  const blogpostCategory = blogpost.category?.[0];
+  const blogpostImage = getTranslatedField(blogpost, 'headerImage', lang)?.[0];
+  const blogpostAuthor = getTranslatedField(blogpost, 'author', lang)?.[0];
+  const blogpostCategory = getTranslatedField(blogpost, 'category', lang)?.[0];
   const publishedAt = blogpost.internal.publishedAt;
 
   const otherBlogPosts = await content.blogpost
@@ -55,7 +55,7 @@ export default async function BlogpostPage({ params }: BlogpostPageParams) {
           {...blogpostAuthor}
           publishAt={publishedAt}
           lang={lang}
-          readTime={blogpost.read_time}
+          readTime={getTranslatedField(blogpost, 'read_time', lang)}
           size="large"
         />
 

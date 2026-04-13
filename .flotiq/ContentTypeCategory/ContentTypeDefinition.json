@@ -2,28 +2,24 @@
   "name": "category",
   "label": "Category",
   "draftPublic": true,
+  "autoSave": false,
   "internal": false,
   "schemaDefinition": {
-    "type": "object",
     "allOf": [
       {
-        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition",
+        "type": null
       },
       {
-        "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "minLength": 1
+            "type": "string"
           },
           "color": {
-            "type": "string",
-            "minLength": 1
+            "type": "string"
           },
           "__translations": {
-            "type": "array",
             "items": {
-              "type": "object",
               "required": [
                 "name",
                 "color",
@@ -31,29 +27,30 @@
               ],
               "properties": {
                 "name": {
-                  "type": "string",
-                  "minLength": 1
+                  "type": "string"
                 },
                 "color": {
-                  "type": "string",
-                  "minLength": 1
+                  "type": "string"
                 },
                 "__language": {
-                  "type": "string",
                   "default": "en",
-                  "minLength": 1
+                  "type": "string"
                 }
-              }
-            }
+              },
+              "type": "object"
+            },
+            "type": "array"
           }
-        }
+        },
+        "type": "object"
       }
     ],
     "required": [
       "name",
       "color"
     ],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "type": "object"
   },
   "metaDefinition": {
     "order": [
@@ -64,13 +61,14 @@
     "propertiesConfig": {
       "name": {
         "label": "Name",
+        "inputType": "text",
         "unique": false,
         "helpText": "",
-        "inputType": "text",
         "isTitlePart": true
       },
       "color": {
         "label": "Color",
+        "inputType": "select",
         "unique": false,
         "options": [
           "blue",
@@ -78,11 +76,15 @@
           "yellow",
           "indigo"
         ],
-        "helpText": "",
-        "inputType": "select",
-        "useOptionsWithLabels": false
+        "useOptionsWithLabels": false,
+        "helpText": ""
       },
       "__translations": {
+        "label": "Translations",
+        "inputType": "object",
+        "unique": false,
+        "hidden": true,
+        "helpText": "",
         "items": {
           "order": [
             "name",
@@ -92,13 +94,14 @@
           "propertiesConfig": {
             "name": {
               "label": "Name",
+              "inputType": "text",
               "unique": false,
               "helpText": "",
-              "inputType": "text",
               "isTitlePart": true
             },
             "color": {
               "label": "Color",
+              "inputType": "select",
               "unique": false,
               "options": [
                 "blue",
@@ -106,23 +109,17 @@
                 "yellow",
                 "indigo"
               ],
-              "helpText": "",
-              "inputType": "select",
-              "useOptionsWithLabels": false
+              "useOptionsWithLabels": false,
+              "helpText": ""
             },
             "__language": {
               "label": "Language",
+              "inputType": "text",
               "unique": false,
-              "helpText": "",
-              "inputType": "text"
+              "helpText": ""
             }
           }
-        },
-        "label": "Translations",
-        "hidden": true,
-        "unique": false,
-        "helpText": "",
-        "inputType": "object"
+        }
       }
     }
   },

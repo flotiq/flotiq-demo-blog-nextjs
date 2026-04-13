@@ -1,8 +1,10 @@
 {
   "blog": {
-    "readMore": "Czytaj więcej",
+    "minRead": "min czytania",
     "otherArticles": "Inne artykuły",
-    "otherArticlesDescription": "Odkrywaj świeże historie zaprojektowane, aby pobudzić Twoją kreatywność i pomóc Ci zobaczyć rzeczy z nowej perspektywy."
+    "otherArticlesDescription": "Odkrywaj świeże historie zaprojektowane, aby pobudzić Twoją kreatywność i pomóc Ci zobaczyć rzeczy z nowej perspektywy.",
+    "readMore": "Czytaj więcej",
+    "notPublished": "Jeszcze nie opublikowano"
   },
   "home": {
     "latestArticles": "Najnowsze artykuły",

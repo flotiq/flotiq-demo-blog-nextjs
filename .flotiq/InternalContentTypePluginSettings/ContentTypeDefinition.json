@@ -2,23 +2,23 @@
   "name": "_plugin_settings",
   "label": "Plugin settings (internal)",
   "draftPublic": false,
+  "autoSave": false,
   "internal": true,
   "schemaDefinition": {
-    "type": "object",
     "allOf": [
       {
-        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition",
+        "type": null
       },
       {
-        "type": "object",
         "properties": {
           "url": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
           },
           "name": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
           },
           "context": {
             "type": "string"
@@ -27,8 +27,8 @@
             "type": "boolean"
           },
           "version": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
           },
           "manifest": {
             "type": "string"
@@ -39,7 +39,8 @@
           "description": {
             "type": "string"
           }
-        }
+        },
+        "type": "object"
       }
     ],
     "required": [
@@ -48,7 +49,8 @@
       "url",
       "version"
     ],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "type": "object"
   },
   "metaDefinition": {
     "order": [
@@ -64,52 +66,52 @@
     "propertiesConfig": {
       "url": {
         "label": "Url",
+        "inputType": "text",
         "unique": false,
-        "helpText": "",
-        "inputType": "text"
+        "helpText": ""
       },
       "name": {
         "label": "Name",
+        "inputType": "text",
         "unique": true,
         "helpText": "",
-        "inputType": "text",
         "isTitlePart": true
       },
       "context": {
         "label": "Context",
+        "inputType": "textarea",
         "unique": false,
-        "helpText": "",
-        "inputType": "textarea"
+        "helpText": ""
       },
       "enabled": {
         "label": "Enabled",
+        "inputType": "checkbox",
         "unique": false,
-        "helpText": "",
-        "inputType": "checkbox"
+        "helpText": ""
       },
       "version": {
         "label": "Version",
+        "inputType": "text",
         "unique": false,
-        "helpText": "",
-        "inputType": "text"
+        "helpText": ""
       },
       "manifest": {
         "label": "Manifest",
+        "inputType": "textarea",
         "unique": false,
-        "helpText": "JSON formatted manifest data",
-        "inputType": "textarea"
+        "helpText": "JSON formatted manifest data"
       },
       "settings": {
         "label": "Settings",
+        "inputType": "textarea",
         "unique": false,
-        "helpText": "",
-        "inputType": "textarea"
+        "helpText": ""
       },
       "description": {
         "label": "Description",
+        "inputType": "textarea",
         "unique": false,
-        "helpText": "",
-        "inputType": "textarea"
+        "helpText": ""
       }
     }
   },

@@ -7,7 +7,7 @@ Next.js demo for blog with Flotiq source
 
 This is a modern, fully-featured blog website built with Next.js and powered by Flotiq headless CMS. It showcases how to create a professional blog website with dynamic content management, internationalization, and modern web development best practices.
 
-Check our live demo: [https://demo-app.flotiq.com/](https://demo-app.flotiq.com/) 
+Check our live demo: [https://demo-blog.flotiq.com/](https://demo-blog.flotiq.com/) 
 
 ## Key Features
 
