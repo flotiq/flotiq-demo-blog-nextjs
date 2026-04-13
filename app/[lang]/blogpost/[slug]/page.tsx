@@ -67,19 +67,14 @@ export default async function BlogpostPage({ params }: BlogpostPageParams) {
 
         <h1 className="text-4xl font-bold sm:text-4xl">
           <LivePreviewBox
-            objectId={blogpost?.id || 'add'}
-            ctdName={'blogpost'}
+            data={blogpost}
             fieldName={getFieldName('title', lang)}
           >
             {getTranslatedField(blogpost, 'title', lang)}
           </LivePreviewBox>
         </h1>
 
-        <LivePreviewBox
-          objectId={blogpost?.id || 'add'}
-          fieldName={getFieldName('lead', lang)}
-          ctdName={'blogpost'}
-        >
+        <LivePreviewBox data={blogpost} fieldName={getFieldName('lead', lang)}>
           <div
             className="text-lg text-gray-500"
             dangerouslySetInnerHTML={{
@@ -104,9 +99,8 @@ export default async function BlogpostPage({ params }: BlogpostPageParams) {
         )}
 
         <LivePreviewBox
-          objectId={blogpost?.id || 'add'}
+          data={blogpost}
           fieldName={getFieldName('content', lang)}
-          ctdName={'blogpost'}
         >
           <div
             className="blogpost-content"
