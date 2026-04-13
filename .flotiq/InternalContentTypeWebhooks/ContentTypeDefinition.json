@@ -2,103 +2,109 @@
   "name": "_webhooks",
   "label": "Webhooks (internal)",
   "draftPublic": false,
+  "autoSave": false,
   "internal": true,
   "schemaDefinition": {
-    "type": "object",
     "allOf": [
       {
-        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition",
+        "type": null
       },
       {
-        "type": "object",
         "properties": {
           "if": {
             "properties": {
               "executionMode": {
-                "const": "code"
+                "type": null
               }
-            }
+            },
+            "type": null
           },
           "url": {
             "type": "string"
           },
           "code": {
-            "type": "string",
+            "minLength": 0,
             "default": "",
-            "minLength": 0
+            "type": "string"
           },
           "else": {
             "properties": {
               "url": {
-                "minLength": 1
+                "minLength": 1,
+                "type": null
               }
-            }
+            },
+            "type": null
           },
           "name": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
           },
           "then": {
             "properties": {
               "code": {
-                "minLength": 1
-              }
-            }
-          },
-          "type": {
-            "type": "string",
-            "default": "async",
-            "minLength": 0
-          },
-          "actions": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "action": {
-                  "type": "string",
-                  "default": "Create"
-                }
+                "minLength": 1,
+                "type": null
               }
             },
-            "minLength": 1
+            "type": null
+          },
+          "type": {
+            "minLength": 0,
+            "default": "async",
+            "type": "string"
+          },
+          "actions": {
+            "minLength": 1,
+            "items": {
+              "properties": {
+                "action": {
+                  "default": "Create",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
           },
           "enabled": {
             "type": "boolean"
           },
           "headers": {
-            "type": "array",
             "items": {
-              "type": "object",
               "properties": {
                 "header_name": {
-                  "type": "string",
-                  "pattern": "^[a-zA-Z0-9-]*$"
+                  "pattern": "^[a-zA-Z0-9-]*$",
+                  "type": "string"
                 },
                 "header_value": {
                   "type": "string"
                 }
-              }
-            }
+              },
+              "type": "object"
+            },
+            "type": "array"
           },
           "executionMode": {
-            "type": "string",
+            "minLength": 0,
             "default": "url",
-            "minLength": 0
+            "type": "string"
           },
           "content_type_definitions": {
-            "type": "array",
+            "minLength": 1,
             "items": {
-              "type": "object",
               "properties": {
                 "content_type_definition_name": {
                   "type": "string"
                 }
-              }
+              },
+              "type": "object"
             },
-            "minLength": 1
+            "type": "array"
           }
-        }
+        },
+        "type": "object"
       }
     ],
     "required": [
@@ -106,7 +112,8 @@
       "content_type_definitions",
       "actions"
     ],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "type": "object"
   },
   "metaDefinition": {
     "order": [
@@ -123,53 +130,57 @@
     "propertiesConfig": {
       "if": {
         "label": "if",
+        "inputType": "text",
         "unique": false,
-        "helpText": "",
-        "inputType": "text"
+        "helpText": ""
       },
       "url": {
         "label": "Url",
+        "inputType": "text",
         "unique": false,
-        "helpText": "Insert webhook Url",
-        "inputType": "text"
+        "helpText": "Insert webhook Url"
       },
       "code": {
         "label": "Webhook code",
+        "inputType": "text",
         "unique": false,
-        "helpText": "Insert webhook code",
-        "inputType": "text"
+        "helpText": "Insert webhook code"
       },
       "else": {
         "label": "else",
+        "inputType": "text",
         "unique": false,
-        "helpText": "",
-        "inputType": "text"
+        "helpText": ""
       },
       "name": {
         "label": "Name",
+        "inputType": "text",
         "unique": false,
         "helpText": "",
-        "inputType": "text",
         "isTitlePart": true
       },
       "then": {
         "label": "then",
+        "inputType": "text",
         "unique": false,
-        "helpText": "",
-        "inputType": "text"
+        "helpText": ""
       },
       "type": {
         "label": "Webhook type",
+        "inputType": "select",
         "unique": false,
         "options": [
           "async",
           "sync",
           "ctd"
         ],
-        "helpText": "Select webhook type",
-        "inputType": "select"
+        "helpText": "Select webhook type"
       },
       "actions": {
+        "label": "Actions",
+        "inputType": "object",
+        "unique": false,
+        "helpText": "",
         "items": {
           "order": [
             "action"
@@ -177,6 +188,7 @@
           "propertiesConfig": {
             "action": {
               "label": "Action",
+              "inputType": "select",
               "unique": false,
               "options": [
                 "Create",
@@ -188,23 +200,22 @@
                 "Custom",
                 "WorkflowTransition"
               ],
-              "helpText": "",
-              "inputType": "select"
+              "helpText": ""
             }
           }
-        },
-        "label": "Actions",
-        "unique": false,
-        "helpText": "",
-        "inputType": "object"
+        }
       },
       "enabled": {
         "label": "Enabled",
+        "inputType": "checkbox",
         "unique": false,
-        "helpText": "",
-        "inputType": "checkbox"
+        "helpText": ""
       },
       "headers": {
+        "label": "Headers",
+        "inputType": "object",
+        "unique": false,
+        "helpText": "",
         "items": {
           "order": [
             "header_name",
@@ -213,34 +224,34 @@
           "propertiesConfig": {
             "header_name": {
               "label": "Header name",
+              "inputType": "text",
               "unique": false,
-              "helpText": "",
-              "inputType": "text"
+              "helpText": ""
             },
             "header_value": {
               "label": "Header value",
+              "inputType": "text",
               "unique": false,
-              "helpText": "",
-              "inputType": "text"
+              "helpText": ""
             }
           }
-        },
-        "label": "Headers",
-        "unique": false,
-        "helpText": "",
-        "inputType": "object"
+        }
       },
       "executionMode": {
         "label": "Webhook execution mode",
+        "inputType": "select",
         "unique": false,
         "options": [
           "url",
           "code"
         ],
-        "helpText": "Select webhook execution mode (only in available sync webhook)",
-        "inputType": "select"
+        "helpText": "Select webhook execution mode (only in available sync webhook)"
       },
       "content_type_definitions": {
+        "label": "Content type definitions",
+        "inputType": "object",
+        "unique": false,
+        "helpText": "",
         "items": {
           "order": [
             "content_type_definition_name"
@@ -248,16 +259,12 @@
           "propertiesConfig": {
             "content_type_definition_name": {
               "label": "Content type definition name",
+              "inputType": "text",
               "unique": false,
-              "helpText": "",
-              "inputType": "text"
+              "helpText": ""
             }
           }
-        },
-        "label": "Content type definitions",
-        "unique": false,
-        "helpText": "",
-        "inputType": "object"
+        }
       }
     }
   },

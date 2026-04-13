@@ -1,8 +1,10 @@
 {
   "blog": {
-    "readMore": "Read more",
+    "minRead": "min read",
     "otherArticles": "Other articles",
-    "otherArticlesDescription": "Explore fresh stories designed to boost your creativity and help you see things from new perspectives."
+    "otherArticlesDescription": "Explore fresh stories designed to boost your creativity and help you see things from new perspectives.",
+    "readMore": "Read more",
+    "notPublished": "Not published yet"
   },
   "home": {
     "latestArticles": "Latest Articles",

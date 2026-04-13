@@ -1,3 +1,4 @@
+import { getDictionary } from '@/app/[lang]/dictionaries';
 import { cn } from '@/app/_lib/utils';
 import { helpers } from '@/flotiq-api-client';
 import { AuthorHydrated } from '@flotiq/flotiq-api-sdk';
@@ -10,7 +11,7 @@ type AuthorProps = AuthorHydrated & {
   size?: 'default' | 'large';
 };
 
-export function Author({
+export async function Author({
   size = 'default',
   name,
   avatar,
@@ -18,6 +19,8 @@ export function Author({
   readTime,
   lang,
 }: AuthorProps) {
+  const dict = await getDictionary(lang);
+
   return (
     <div className="flex gap-3 items-center mt-auto">
       {avatar && (
@@ -44,12 +47,14 @@ export function Author({
           {name}
         </span>
         <span className="text-gray-500">
-          {new Date(publishAt).toLocaleDateString(lang, {
-            year: 'numeric',
-            month: 'numeric',
-            day: 'numeric',
-          })}
-          {readTime && ` • ${readTime} min read`}
+          {publishAt
+            ? new Date(publishAt).toLocaleDateString(lang, {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric',
+              })
+            : dict.blog.notPublished}
+          {readTime && ` • ${readTime} ${dict.blog.minRead}`}
         </span>
       </div>
     </div>

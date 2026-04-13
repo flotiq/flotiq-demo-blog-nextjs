@@ -2,27 +2,29 @@
   "name": "_tag",
   "label": "Tag (internal)",
   "draftPublic": false,
+  "autoSave": false,
   "internal": true,
   "schemaDefinition": {
-    "type": "object",
     "allOf": [
       {
-        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition",
+        "type": null
       },
       {
-        "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
           }
-        }
+        },
+        "type": "object"
       }
     ],
     "required": [
       "name"
     ],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "type": "object"
   },
   "metaDefinition": {
     "order": [
@@ -31,9 +33,9 @@
     "propertiesConfig": {
       "name": {
         "label": "Name",
+        "inputType": "text",
         "unique": true,
         "helpText": "",
-        "inputType": "text",
         "isTitlePart": true
       }
     }

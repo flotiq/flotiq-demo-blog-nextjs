@@ -2,33 +2,35 @@
   "name": "author",
   "label": "Author",
   "draftPublic": true,
+  "autoSave": false,
   "internal": false,
   "schemaDefinition": {
-    "type": "object",
     "allOf": [
       {
-        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition",
+        "type": null
       },
       {
-        "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "minLength": 1
+            "type": "string"
           },
           "avatar": {
-            "type": "array",
             "items": {
-              "$ref": "#/components/schemas/DataSource"
-            }
+              "$ref": "#/components/schemas/DataSource",
+              "type": null
+            },
+            "type": "array"
           }
-        }
+        },
+        "type": "object"
       }
     ],
     "required": [
       "name"
     ],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "type": "object"
   },
   "metaDefinition": {
     "order": [
@@ -38,19 +40,20 @@
     "propertiesConfig": {
       "name": {
         "label": "Name",
+        "inputType": "text",
         "unique": false,
         "helpText": "",
-        "inputType": "text",
         "isTitlePart": true
       },
       "avatar": {
         "label": "Avatar",
-        "unique": false,
-        "helpText": "",
         "inputType": "datasource",
+        "unique": false,
         "validation": {
+          "relationMultiple": false,
           "relationContenttype": "_media"
-        }
+        },
+        "helpText": ""
       }
     }
   },

@@ -7,32 +7,23 @@ import { getDictionary } from '@/app/[lang]/dictionaries';
 import { ArrowRight } from 'lucide-react';
 import { Badge } from '../Badge/Badge';
 import { Author } from '../Author/Author';
+import { getTranslatedField } from '@/app/_lib/helpers';
 
-type CardProps = BlogpostHydratedTwice & {
+type CardProps = {
+  blogpost: BlogpostHydratedTwice;
   readonly lang: string;
   size?: 'default' | 'large';
 };
 
-export async function Card({
-  title,
-  slug,
-  headerImage,
-  category,
-  author,
-  lead,
-  read_time,
-  internal,
-  lang,
-  size = 'default',
-}: CardProps) {
+export async function Card({ blogpost, lang, size = 'default' }: CardProps) {
   const dict = await getDictionary(lang);
 
-  const blogCategory = category?.[0];
-  const blogAuthor = author?.[0];
-  const publishAt = internal.publishedAt;
+  const blogCategory = getTranslatedField(blogpost, 'category', lang)?.[0];
+  const blogAuthor = getTranslatedField(blogpost, 'author', lang)?.[0];
+  const publishAt = blogpost.internal.publishedAt;
 
   return (
-    <Link href={`/${lang}/blogpost/${slug}`}>
+    <Link href={`/${lang}/blogpost/${blogpost.slug}`}>
       <div
         className={cn(
           'h-full bg-white cursor-pointer flex flex-col gap-4 group overflow-hidden rounded-lg',
@@ -41,12 +32,12 @@ export async function Card({
       >
         <div className="aspect-feature-blog relative overflow-hidden rounded-lg shrink-0">
           <Image
-            src={helpers.getMediaUrl(headerImage, {
+            src={helpers.getMediaUrl(blogpost.headerImage?.[0], {
               width: 1600,
               type: 'image',
               omitFileName: false,
             })}
-            alt={title}
+            alt={blogpost.title}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
@@ -54,7 +45,9 @@ export async function Card({
         {blogCategory && (
           <Badge variant={blogCategory.color}>{blogCategory.name}</Badge>
         )}
-        <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
+        <h2 className="text-2xl font-bold text-gray-900">
+          {getTranslatedField(blogpost, 'title', lang)}
+        </h2>
         <div className="flex flex-col h-full gap-4">
           <p
             className={cn(
@@ -62,12 +55,12 @@ export async function Card({
               size === 'large' ? 'text-lg order-last' : '',
             )}
           >
-            {lead}
+            {getTranslatedField(blogpost, 'lead', lang)}
           </p>
           <Author
             {...blogAuthor}
             publishAt={publishAt}
-            readTime={read_time}
+            readTime={getTranslatedField(blogpost, 'read_time', lang)}
             lang={lang}
           />
         </div>
